@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Customizable News Ticker Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Roboto', sans-serif;
+            color: #2c3e50;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #FFF;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .section {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .section p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        pre code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #34495e;
+            color: #ffffff;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Customizable News Ticker (CNTicker)</h1>
+        <p>Documentation for implementing and customizing the news ticker.</p>
+    </div>
+
+    <div class="container">
+
+        <!-- Introduction Section -->
+        <div class="section">
+            <h2>Introduction</h2>
+            <p>The Customizable News Ticker (CNTicker) is a lightweight, easy-to-use JavaScript plugin for adding live, scrolling news or announcements to your website. It supports multiple animations, customization options, and a responsive design, making it suitable for any project.</p>
+        </div>
+
+        <!-- Installation Section -->
+        <div class="section">
+            <h2>Installation</h2>
+            <p>Include the following scripts and styles in your HTML file:</p>
+            <pre>
+                <code class="html">&lt;!-- Include CNTicker --&gt;
+&lt;script src="js/cnticker.js"&gt;&lt;/script&gt;</code>
+            </pre>
+        </div>
+
+        <!-- Quick Start Section -->
+        <div class="section">
+            <h2>Quick Start</h2>
+            <p>Follow these steps to quickly set up the CNTicker:</p>
+            <pre>
+                <code class="javascript">
+&lt;!-- HTML Code --&gt;
+&lt;ul class="my-ticker" data-pause-on-hover="true" data-cnticker-animation="write"&gt;
+    &lt;li&gt;Breaking: Global stocks surge amid market optimism&lt;/li&gt;
+    &lt;li&gt;Weather Alert: Heavy rainfall expected in the north.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- JavaScript Code --&gt;
+var element = document.querySelector('.cnticker');
+new CNTicker(element);
+                </code>
+            </pre>
+        </div>
+
+        <!-- Options Section -->
+        <div class="section">
+            <h2>Options</h2>
+            <p>You can set options in one of these two ways</p>
+            <pre><code>new CNTicker(element, {
+    speed: 40,
+    animation: 'up',
+    pauseOnHover: true
+});</code></pre>
+            <p>or</p>
+            <pre><code class="language-html">&lt;ul class="my-ticker" data-cnticker-pause-on-hover="true" data-cnticker-animation="up"&gt;&lt;/ul&gt;</code></pre>
+            <p>Customize the ticker with the following options:</p>
+            <table border="1" cellspacing="0" cellpadding="10" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>label</code></td>
+                        <td>String</td>
+                        <td>Label displayed before the ticker (e.g., "Breaking News").</td>
+                        <td>''</td>
+                    </tr>
+                    <tr>
+                        <td><code>withLabel</code></td>
+                        <td>Boolean</td>
+                        <td>Display or hide the label</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td><code>speed</code></td>
+                        <td>Number</td>
+                        <td>Scrolling speed in pixels per second.</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td><code>pauseOnHover</code></td>
+                        <td>Boolean</td>
+                        <td>Determine if you want the ticker to pause on hover.</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td><code>animation</code></td>
+                        <td>String</td>
+                        <td>Animation type (e.g., 'marquee', 'up', 'down', 'write').</td>
+                        <td>'marquee'</td>
+                    </tr>
+                    <tr>
+                        <td><code>dir</code></td>
+                        <td>String</td>
+                        <td>Text direction ('ltr' or 'rtl').</td>
+                        <td>'ltr'</td>
+                    </tr>
+                    <tr>
+                        <td><code>transition</code></td>
+                        <td>Number</td>
+                        <td>Delay before moving to the next item (in other animations than 'marquee') (in ms).</td>
+                        <td>5000</td>
+                    </tr>
+                    <tr>
+                        <td><code>withSeparators</code></td>
+                        <td>Boolean</td>
+                        <td>Show or hide the separators between items.</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td><code>cursorSpeed</code></td>
+                        <td>Number</td>
+                        <td>Write character every x ms (in write animation mode).</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><code>fontSize</code></td>
+                        <td>Number</td>
+                        <td>font size in pixels.</td>
+                        <td>16</td>
+                    </tr>
+                    <tr>
+                        <td><code>labelFontSize</code></td>
+                        <td>Number</td>
+                        <td>Label font size in pixels.</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td><code>labelColor</code></td>
+                        <td>String</td>
+                        <td>Color of the label background.</td>
+                        <td>'#1565c0'</td>
+                    </tr>
+                    <tr>
+                        <td><code>borderColor</code></td>
+                        <td>String</td>
+                        <td>Color of the label border.</td>
+                        <td>'#1976d2'</td>
+                    </tr>
+                    <tr>
+                        <td><code>background</code></td>
+                        <td>String</td>
+                        <td>Background of the ticker.</td>
+                        <td>'linear-gradient(90deg, #64b5f6, #1976d2)'</td>
+                    </tr>
+                    <tr>
+                        <td><code>textColor</code></td>
+                        <td>String</td>
+                        <td>Color of the ticker.</td>
+                        <td>'#FFF'</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+       <!-- Examples Section -->
+        <div class="examples">
+            <div class="container examples-container">
+                <h2>Examples</h2>
+                <p>Explore different configurations of the ticker to fit your project needs:</p>
+
+                <!-- Example 1: Basic Marquee Animation -->
+                <h3>Example 1: Marquee Animation</h3>
+                <ul class="cnticker1" data-cnticker-animation="marquee" data-cnticker-speed="50" data-cnticker-with-label="true" data-cnticker-label="Breaking News">
+                    <li>Breaking News: New software update released!</li>
+                    <li>Tech Alert: Major breakthrough in AI technology.</li>
+                    <li>Sports: Home team secures dramatic win!</li>
+                    <li>Finance: Stocks reach an all-time high.</li>
+                    <li>Finance: Stocks reach an all-time high.</li>
+                </ul>
+
+                <!-- Example 2: RTL Direction -->
+                <h3>Example 2: Right-to-Left (RTL) Direction</h3>
+                <ul class="cnticker2" data-cnticker-dir="rtl" data-cnticker-animation="marquee" data-cnticker-speed="60" data-cnticker-with-label="true" data-cnticker-label="أخبار عاجلة">
+                    <li>أخبار عاجلة: إطلاق تحديث جديد للبرمجيات!</li>
+                    <li>التكنولوجيا: تقدم كبير في تكنولوجيا الذكاء الاصطناعي.</li>
+                    <li>الرياضة: الفريق المحلي يحقق فوزاً دراماتيكياً!</li>
+                    <li>إطلاق أول روبوت ذكي يعمل بالطاقة الشمسية.</li>
+                    <li>تسريب معلومات عن الهاتف الذكي القادم لشركة كبرى.</li>
+                </ul>
+
+                <!-- Example 3: Vertical Up Animation -->
+                <h3>Example 3: Vertical Up Animation</h3>
+                <ul class="cnticker3" data-cnticker-animation="up" data-cnticker-speed="80" data-cnticker-with-label="true" data-cnticker-label="Breaking News">
+                    <li>Finance: Stocks reach an all-time high.</li>
+                    <li>Finance: Stocks reach an all-time high.</li>
+                    <li>Health: New dietary trends gaining popularity.</li>
+                </ul>
+
+                <!-- Example 4: Vertical Down Animation -->
+                <h3>Example 4: Vertical Down Animation</h3>
+                <ul class="cnticker4" data-cnticker-animation="down" data-cnticker-speed="80" data-cnticker-with-label="true" data-cnticker-label="Breaking News">
+                    <li>Breaking: New scientific discovery revealed.</li>
+                    <li>Weather: Expect heavy rainfall this week.</li>
+                    <li>World: Peace talks yield positive outcomes.</li>
+                </ul>
+
+                <!-- Example 5: Typing Effect -->
+                <h3>Example 5: Typing Effect</h3>
+                <ul class="cnticker5" data-cnticker-animation="write" data-cnticker-cursor-speed="10" data-cnticker-with-label="true" data-cnticker-label="Breaking News">
+                    <li>Update: Upcoming event registration is live.</li>
+                    <li>Reminder: Don't forget to update your profile.</li>
+                    <li>Announcement: New features coming soon.</li>
+                </ul>
+
+                <!-- Example 6: Without Label -->
+                <h3>Example 6: Without Label</h3>
+                <ul class="cnticker6" data-cnticker-animation="marquee" data-cnticker-speed="50">
+                    <li>Breaking News: New software update released!</li>
+                    <li>Tech Alert: Major breakthrough in AI technology.</li>
+                    <li>Sports: Home team secures dramatic win!</li>
+                    <li>Finance: Stocks reach an all-time high.</li>
+                    <li>Finance: Stocks reach an all-time high.</li>
+                </ul>
+
+                <!-- Example 7: Custom Colors -->
+                <h3>Example 7: Custom Colors</h3>
+                <ul class="cnticker7" data-cnticker-animation="marquee"
+                    data-cnticker-speed="50"
+                    data-cnticker-with-label="true"
+                    data-cnticker-label="Breaking News"
+                    data-cnticker-label-color="#f44336"
+                    data-cnticker-border-color="#b71c1c"
+                    data-cnticker-background="#ef5350">
+                    <li>Breaking News: New software update released!</li>
+                    <li>Tech Alert: Major breakthrough in AI technology.</li>
+                    <li>Sports: Home team secures dramatic win!</li>
+                    <li>Finance: Stocks reach an all-time high.</li>
+                    <li>Finance: Stocks reach an all-time high.</li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Developed by <a href="mailto:mohamed.hesham5550@gmail.com">Mohamed Hesham</a></p>
+    </div>
+
+    <script src="js/cnticker.js"></script>
+    <script>
+        new CNTicker(document.querySelector('.cnticker1'));
+        new CNTicker(document.querySelector('.cnticker2'));
+        new CNTicker(document.querySelector('.cnticker3'));
+        new CNTicker(document.querySelector('.cnticker4'));
+        new CNTicker(document.querySelector('.cnticker5'));
+        new CNTicker(document.querySelector('.cnticker6'));
+        new CNTicker(document.querySelector('.cnticker7'));
+    </script>
+
+</body>
+</html>

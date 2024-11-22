@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Customizable News Ticker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+        /* General styles */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Roboto', sans-serif;
+            color: #2c3e50;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 80px 0;
+            border-bottom: 3px solid #ececec;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .hero .btn-container {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Methods Section */
+        .methods {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 0;
+            background-color: #ffffff;
+        }
+
+        .methods h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .methods pre code {
+            font-family: 'Courier New', Courier, monospace;
+            text-align: left;
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 60px 0;
+            background-color: #ecf0f1;
+        }
+
+        .feature-cards {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .feature-card {
+            background-color: #ffffff;
+            width: 25%;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            color: #34495e;
+        }
+
+        /* Footer Section */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            background-color: #34495e;
+            color: #ffffff;
+        }
+
+        .footer p {
+            font-size: 1rem;
+            color: #ecf0f1;
+        }
+
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .examples-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .methods pre {
+                max-width: 100%;
+            }
+
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-cards {
+                display: grid;
+                grid-template-columns: 50% 50%;
+            }
+
+            .feature-card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .btn-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .feature-cards {
+                grid-template-columns: 100%;
+            }
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>Customizable News Ticker (CNTicker)</h1>
+            <p>Keep your website visitors updated with live, scrolling news or announcements. Easy to integrate and customizable for any project.</p>
+            <div class="btn-container">
+                <a href="#" class="button">Buy</a>
+                <a href="docs.html" class="button">Documentation</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Examples Section -->
+    <div class="examples">
+        <div class="container examples-container">
+            <ul class="cnticker1" data-cnticker-with-label="true"
+                data-cnticker-label="Breaking News"
+                 data-cnticker-label="Breaking News"
+                 data-cnticker-animation="marquee" data-cnticker-speed="80" data-cnticker-transition="3000">
+                <li>Breaking: Global stocks surge amid market optimism</li>
+                <li>Weather Alert: Heavy rainfall expected in the north.</li>
+                <li>Sports Update: Local team wins national championship.</li>
+                <li>Technology: New smartphone release sets records for pre-orders.</li>
+                <li>Entertainment: Blockbuster movie tops box office this weekend.</li>
+                <li>Health News: Experts recommend new dietary guidelines.</li>
+                <li>Travel: Top destinations to visit this winter unveiled.</li>
+            </ul>
+
+            <ul class="cnticker2" data-cnticker-with-label="true"
+                data-cnticker-label="Breaking News"
+                 data-cnticker-label="Breaking News"
+                 data-cnticker-dir="rtl" data-cnticker-animation="marquee" data-cnticker-speed="80" data-cnticker-transition="3000">
+                <li>Breaking: Global stocks surge amid market optimism</li>
+                <li>Weather Alert: Heavy rainfall expected in the north.</li>
+                <li>Sports Update: Local team wins national championship.</li>
+                <li>Technology: New smartphone release sets records for pre-orders.</li>
+                <li>Entertainment: Blockbuster movie tops box office this weekend.</li>
+                <li>Health News: Experts recommend new dietary guidelines.</li>
+                <li>Travel: Top destinations to visit this winter unveiled.</li>
+            </ul>
+
+            <ul class="cnticker3" data-cnticker-with-label="true"
+                data-cnticker-label="Breaking News"
+                 data-cnticker-label="Breaking News"
+                 data-cnticker-animation="up" data-cnticker-speed="80" data-cnticker-transition="3000">
+                <li>Breaking: Global stocks surge amid market optimism</li>
+                <li>Weather Alert: Heavy rainfall expected in the north.</li>
+                <li>Sports Update: Local team wins national championship.</li>
+                <li>Technology: New smartphone release sets records for pre-orders.</li>
+                <li>Entertainment: Blockbuster movie tops box office this weekend.</li>
+                <li>Health News: Experts recommend new dietary guidelines.</li>
+                <li>Travel: Top destinations to visit this winter unveiled.</li>
+            </ul>
+
+            <ul class="cnticker4" data-cnticker-with-label="true"
+                data-cnticker-label="Breaking News"
+                 data-cnticker-label="Breaking News"
+                 data-cnticker-animation="down" data-cnticker-speed="80" data-cnticker-transition="3000">
+                <li>Breaking: Global stocks surge amid market optimism</li>
+                <li>Weather Alert: Heavy rainfall expected in the north.</li>
+                <li>Sports Update: Local team wins national championship.</li>
+                <li>Technology: New smartphone release sets records for pre-orders.</li>
+                <li>Entertainment: Blockbuster movie tops box office this weekend.</li>
+                <li>Health News: Experts recommend new dietary guidelines.</li>
+                <li>Travel: Top destinations to visit this winter unveiled.</li>
+            </ul>
+
+            <ul class="cnticker5" data-cnticker-with-label="true"
+                data-cnticker-label="Breaking News"
+                 data-cnticker-label="Breaking News"
+                 data-cnticker-animation="write" data-cnticker-speed="80" data-cnticker-transition="3000" data-cnticker-cursor-speed="10">
+                <li>Breaking: Global stocks surge amid market optimism</li>
+                <li>Weather Alert: Heavy rainfall expected in the north.</li>
+                <li>Sports Update: Local team wins national championship.</li>
+                <li>Technology: New smartphone release sets records for pre-orders.</li>
+                <li>Entertainment: Blockbuster movie tops box office this weekend.</li>
+                <li>Health News: Experts recommend new dietary guidelines.</li>
+                <li>Travel: Top destinations to visit this winter unveiled.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Methods Section -->
+    <div class="methods">
+        <div class="container">
+            <h2>QUICK START</h2>
+            <p>Easy to use in any web project. Integrate in just a few lines of code.</p>
+            <div class="method-code">
+                <pre>
+                    <code>var element = document.querySelector('.cnticker');
+new CNTicker(element);
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <div class="container feature-cards">
+            <div class="feature-card">
+                <i class="fas fa-scroll"></i>
+                <h3>Live News Scrolling</h3>
+                <p>Automatically scroll live news or updates on your website with custom speed settings.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-palette"></i>
+                <h3>Customizable Design</h3>
+                <p>Choose your own colors, fonts, and scrolling styles to match your website's theme.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-tools"></i>
+                <h3>Easy Setup</h3>
+                <p>Integrates easily into any web project with simple JavaScript methods.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Responsive</h3>
+                <p>Fully responsive design, ensuring your news ticker looks great on all screen sizes.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>Developed by <a href="#">Mohamed Hesham</a></p>
+    </div>
+
+    <script src="js/cnticker.js"></script>
+    <script>
+        new CNTicker(document.querySelector('.cnticker1'));
+        new CNTicker(document.querySelector('.cnticker2'));
+        new CNTicker(document.querySelector('.cnticker3'));
+        new CNTicker(document.querySelector('.cnticker4'));
+        new CNTicker(document.querySelector('.cnticker5'));
+    </script>
+
+</body>
+</html>
